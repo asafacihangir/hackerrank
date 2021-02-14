@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Stream;
 
+//https://www.youtube.com/watch?v=rv04jzPperg
+
 public class CountTripletsApp1 {
 
   public static void main(String[] args) {
