@@ -3,57 +3,93 @@ package com.cihangir._00_roads_and_libraries;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.LinkedList;
 
 public class RoadsAndLibrariesApp0 {
 
   public static void main(String[] args) throws IOException {
-
-    final int c_lib = 2;
-    final int c_road = 5;
-    final int cityCount = 6;
-
-    int[][] cities = getInputsFromFile(cityCount);
-
-    final long minimalCost = roadsAndLibraries(cityCount, c_lib, c_road, cities);
-
-
-
+    run();
   }
-
 
   // Complete the roadsAndLibraries function below.
-  static long roadsAndLibraries(int n, int c_lib, int c_road, int[][] cities) {
+  static long roadsAndLibraries(int numberOfVertices, int c_lib, int c_road, int[][] cities) {
 
-     for ( int i=0; i<cities.length; i++){
+    Graph graph = new Graph(numberOfVertices);
+    for (int[] city : cities) {
+      graph.addEdge(city[0], city[1]);
+    }
+    boolean fixRoads = c_lib > c_road;
 
-
-     }
-
-
-    return 0L;
+    long totalCost = 0L;
+    boolean[] visited = new boolean[numberOfVertices+1];
+    for (int i = 1; i <= numberOfVertices; i++) {
+      LinkedList<Integer> queue = new LinkedList<>();
+      if (!visited[i]) {
+        visited[i] = true;
+        totalCost = totalCost + c_lib;
+        if (fixRoads) {
+          queue.add(i);
+        }
+      }
+      while (queue.size() != 0) {
+        int vertex = queue.poll();
+        for (int n : graph.adjLists[vertex]) {
+          if (!visited[n]) {
+            visited[n] = true;
+            totalCost = totalCost + c_road;
+            queue.add(n);
+          }
+        }
+      }
+    }
+    return totalCost;
   }
 
-
-  static int[][] getInputsFromFile(int m) throws IOException {
+  static void run() throws IOException {
     final String currentDirectory = System.getProperty("user.dir");
-    final String inputPath = currentDirectory + "/src/main/resources/frequency-queries-input2.txt";
+    final String inputPath = currentDirectory + "/src/main/resources/input2.txt";
 
     BufferedReader bufferedReader = new BufferedReader(new FileReader(inputPath));
-    int q = Integer.parseInt(bufferedReader.readLine().trim());
+
+    String[] nmC_libC_road = bufferedReader.readLine().split(" ");
+
+    int numberOfVertices = Integer.parseInt(nmC_libC_road[0]);
+
+    int m = Integer.parseInt(nmC_libC_road[1]);
+
+    int c_lib = Integer.parseInt(nmC_libC_road[2]);
+
+    int c_road = Integer.parseInt(nmC_libC_road[3]);
 
     int[][] cities = new int[m][2];
 
     for (int i = 0; i < m; i++) {
       String[] citiesRowItems = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
+
       for (int j = 0; j < 2; j++) {
         int citiesItem = Integer.parseInt(citiesRowItems[j]);
         cities[i][j] = citiesItem;
       }
     }
 
+    long result = roadsAndLibraries(numberOfVertices, c_lib, c_road, cities);
+    System.out.println("=====" + result + "=====");
     bufferedReader.close();
-    return cities;
   }
 
+  static class Graph {
 
+    private LinkedList<Integer> adjLists[];
+    // Graph creation
+    Graph(int vertices) {
+      adjLists = new LinkedList[vertices+1];
+      for (int i = 0; i <= vertices; i++) adjLists[i] = new LinkedList<>();
+    }
+
+    // Add edges
+    void addEdge(int src, int dest) {
+      adjLists[src].add(dest);
+      adjLists[dest].add(src);
+    }
+  }
 }
