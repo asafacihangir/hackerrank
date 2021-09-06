@@ -47,7 +47,7 @@ public class RoadsAndLibrariesApp0 {
 
   static void run() throws IOException {
     final String currentDirectory = System.getProperty("user.dir");
-    final String inputPath = currentDirectory + "/src/main/resources/input2.txt";
+    final String inputPath = currentDirectory + "/src/main/resources/00/input2.txt";
 
     BufferedReader bufferedReader = new BufferedReader(new FileReader(inputPath));
 
