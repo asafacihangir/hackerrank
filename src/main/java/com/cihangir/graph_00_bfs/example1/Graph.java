@@ -1,4 +1,4 @@
-package com.cihangir.graph_00_bfs;
+package com.cihangir.graph_00_bfs.example1;
 
 import java.util.LinkedList;
 
