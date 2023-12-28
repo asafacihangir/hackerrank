@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module type="JAVA_MODULE" version="4" />
+<module version="4">
+  <component name="SonarLintModuleSettings">
+    <option name="uniqueId" value="0bd69d23-5de4-40d6-84e3-a62b93d79350" />
+  </component>
+</module>
