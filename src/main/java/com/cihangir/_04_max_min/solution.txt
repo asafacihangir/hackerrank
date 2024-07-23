@@ -1,0 +1,7 @@
+Sıralama: Giriş dizisini sıralarız. Bu, her alt dizinin sıralı olacağı anlamına gelir ve böylece sadece en büyük ve en küçük değerleri kontrol ederek adaletsizlik hesaplanabilir.
+
+Hesaplama: Belirtilen k uzunluğundaki her alt dizi için, en küçük ve en büyük eleman arasındaki farkı hesaplarız. Bu farkı, unfairness değişkeni ile karşılaştırır ve daha küçük bir değer bulduğumuzda güncelleriz.
+
+Bellek Kullanımı: Ekstra bir liste oluşturmak yerine, doğrudan sıralanmış dizi üzerinde hesaplama yaparız. Bu, bellek kullanımını ve işlem süresini önemli ölçüde azaltır.
+Bu yöntemle, sıralama işlemi O(nlogn) zaman karmaşıklığına sahiptir ve ardından her alt dizi için
+O(n) bir zaman karmaşıklığına sahip olursunuz. Bu, kodunuzun büyük girişler için bile verimli çalışmasını sağlar.
