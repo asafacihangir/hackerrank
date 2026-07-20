@@ -114,3 +114,5 @@ fabric.properties
 
 # Compiled Jasper Reports
 *.jasper
+# Claude Code HITL
+.hitl/
