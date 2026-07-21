@@ -1,0 +1,1 @@
+This is a simulation problem. Because the problem guarantees that it is always possible to win, we know that our input will never **2** contain  consecutive thunderclouds. To reach the last cloud in a minimum number of steps, always try make a jump from **i**  to **i+2**. If that is not possible, jump to **i+1**.
